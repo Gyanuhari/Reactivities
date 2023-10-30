@@ -1,4 +1,5 @@
 {
   "dotnet.server.useOmnisharp": true,
-  "omnisharp.useModernNet": false
+  "omnisharp.useModernNet": false,
+  "editor.formatOnSave": true
 }
