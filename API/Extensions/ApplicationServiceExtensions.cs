@@ -1,6 +1,5 @@
 using Application.Activities;
 using Application.Core;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
