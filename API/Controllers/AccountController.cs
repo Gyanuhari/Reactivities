@@ -46,12 +46,18 @@ namespace API.Controllers
         {
             var userNameAlreadyExists = await _userManager.Users.AnyAsync(x => x.UserName.Equals(registerDto.Username));
             if (userNameAlreadyExists)
-                return BadRequest("Username already taken!");
+            {
+                ModelState.AddModelError("userName", "Username already taken!");
+                return ValidationProblem();
+            }
 
             //Can be done in IdentityService, however, we did here for better error format.
             var emailAlreadyExists = await _userManager.Users.AnyAsync(x => x.Email.Equals(registerDto.Email));
             if (emailAlreadyExists)
-                return BadRequest("Email already taken!");
+            {
+                ModelState.AddModelError("email", "Email already taken!");
+                return ValidationProblem();
+            }
 
             var user = new AppUser()
             {

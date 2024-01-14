@@ -1,7 +1,7 @@
 import { Button, Header, Segment } from "semantic-ui-react";
 import axios from "axios";
 import { useState } from "react";
-import ValidationError from "./ValidationError";
+import ValidationErrors from "./ValidationErrors";
 
 export default function TestErrors() {
   const baseUrl = "http://localhost:5000/api/";
@@ -14,7 +14,9 @@ export default function TestErrors() {
   }
 
   function handleBadRequest() {
-    axios.get(baseUrl + "buggy/bad-request").catch((err) => console.log(err.response));
+    axios
+      .get(baseUrl + "buggy/bad-request")
+      .catch((err) => console.log(err.response));
   }
 
   function handleServerError() {
@@ -74,7 +76,7 @@ export default function TestErrors() {
       </Segment>
       {errors && (
         <Segment>
-          <ValidationError errors={errors} />
+          <ValidationErrors errors={errors} />
         </Segment>
       )}
     </>
